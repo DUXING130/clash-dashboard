@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+import legacy from '@vitejs/plugin-legacy';
 import jotaiDebugLabel from 'jotai/babel/plugin-debug-label'
 import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh'
 import UnoCSS from 'unocss/vite'
@@ -15,6 +16,9 @@ export default defineConfig(
             }),
             tsConfigPath(),
             UnoCSS(),
+            legacy({
+                targets: ['defaults', 'not IE 11']
+              }),
             VitePWA({
                 injectRegister: 'inline',
                 manifest: {
